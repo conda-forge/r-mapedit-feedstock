@@ -1,4 +1,4 @@
-{% set version = '0.3.2' %}
+{% set version = "0.4.1" %}
 
 package:
   name: r-mapedit
@@ -9,7 +9,7 @@ source:
   url:
     - https://cran.r-project.org/src/contrib/mapedit_{{ version }}.tar.gz
     - https://cran.r-project.org/src/contrib/Archive/mapedit/mapedit_{{ version }}.tar.gz
-  sha256: b33b9cfbdec1e8aa72b0c17b000787366e590ef63aee81d7c0a1cf4228f53274
+  sha256: a12cd07ed4510cb482e16c80cec01fbe2f9746b830a56cc23921a9cceb3cc8b7
 
 build:
   number: 0
