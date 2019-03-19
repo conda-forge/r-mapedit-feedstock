@@ -21,13 +21,16 @@ build:
 
 requirements:
   build:
+    - {{posix}}zip               # [win]
+  host:
     - r-base
     - r-dplyr
     - r-htmltools >=0.3
     - r-htmlwidgets
     - r-jsonlite
-    - r-leaflet
-    - r-leaflet.extras
+    - r-leaflet >=2.0.1
+    - r-leaflet.extras >=1.0
+    - r-leafpm
     - r-mapview
     - r-miniui
     - r-sf >=0.5_2
@@ -38,8 +41,9 @@ requirements:
     - r-htmltools >=0.3
     - r-htmlwidgets
     - r-jsonlite
-    - r-leaflet
-    - r-leaflet.extras
+    - r-leaflet >=2.0.1
+    - r-leaflet.extras >=1.0
+    - r-leafpm
     - r-mapview
     - r-miniui
     - r-sf >=0.5_2
