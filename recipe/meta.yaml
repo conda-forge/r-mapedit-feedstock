@@ -13,41 +13,63 @@ source:
 
 build:
   number: 0
-  script: R CMD INSTALL --build .
   noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
     - {{ posix }}zip               # [win]
+    - cross-r-base {{ r_base }}    # [build_platform != target_platform]
   host:
     - r-base
+    - r-dt
+    - r-assertthat
     - r-dplyr
     - r-htmltools >=0.3
     - r-htmlwidgets
     - r-jsonlite
+    - r-leafem
     - r-leaflet >=2.0.1
     - r-leaflet.extras >=1.0
     - r-leafpm
+    - r-leafpop
     - r-mapview
     - r-miniui
+    - r-raster
+    - r-rstudioapi
+    - r-scales
     - r-sf >=0.5_2
     - r-shiny
+    - r-shinywidgets >=0.4.3
+    - r-tmaptools
   run:
     - r-base
+    - r-dt
+    - r-assertthat
     - r-dplyr
     - r-htmltools >=0.3
     - r-htmlwidgets
     - r-jsonlite
+    - r-leafem
     - r-leaflet >=2.0.1
     - r-leaflet.extras >=1.0
     - r-leafpm
+    - r-leafpop
     - r-mapview
     - r-miniui
+    - r-raster
+    - r-rstudioapi
+    - r-scales
     - r-sf >=0.5_2
     - r-shiny
+    - r-shinywidgets >=0.4.3
+    - r-tmaptools
 
 test:
   commands:
@@ -57,9 +79,11 @@ test:
 about:
   home: https://github.com/r-spatial/mapedit
   license: MIT
-  license_file: LICENSE
   summary: Suite of interactive functions and helpers for selecting and editing geospatial data.
   license_family: MIT
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/MIT'
+    - LICENSE
 
 extra:
   recipe-maintainers:
@@ -69,22 +93,20 @@ extra:
 # Package: mapedit
 # Title: Interactive Editing of Spatial Data in R
 # Description: Suite of interactive functions and helpers for selecting and editing geospatial data.
-# Version: 0.5.0
-# Date: 2019-03-16
-# Authors@R: c( person("Tim", "Appelhans", role = c("aut", "cre"), email = "tim.appelhans@gmail.com"), person("Kenton", "Russell", role = c("aut")), person("Lorenzo", "Busetto", role = c("aut")) )
+# Version: 0.7.0
+# Authors@R: c( person("Tim", "Appelhans", role = c("aut", "cre"), email = "tim.appelhans@gmail.com"), person("Kenton", "Russell", role = c("aut")), person("Lorenzo", "Busetto", role = c("aut")), person("Josh", "O'Brien", role = c("ctb")), person("Jakob", "Gutschlhofer", role = c("ctb")), person("Matt", "Johnson", role = c("ctb")), person("Eli", "Pousson", role = "ctb", comment = c(ORCID = "0000-0001-8280-1706")) )
 # URL: https://github.com/r-spatial/mapedit
 # BugReports: https://github.com/r-spatial/mapedit/issues
 # License: MIT + file LICENSE
 # Depends: R (>= 3.1.0)
-# Imports: dplyr, htmltools (>= 0.3), htmlwidgets, jsonlite, leaflet (>= 2.0.1), leaflet.extras (>= 1.0), leafpm, mapview, miniUI, sf (>= 0.5-2), shiny
-# Suggests: crayon
+# Imports: assertthat, dplyr, DT, htmltools (>= 0.3), htmlwidgets, jsonlite, leafem, leaflet (>= 2.0.1), leaflet.extras (>= 1.0), leafpm, leafpop, mapview, methods, miniUI, raster, rstudioapi, scales, sf (>= 0.5-2), shiny, tmaptools, shinyWidgets (>= 0.4.3)
+# Suggests: crayon, sp
 # Enhances: geojsonio
 # Encoding: UTF-8
-# LazyData: true
-# RoxygenNote: 6.1.1
+# RoxygenNote: 7.3.2
 # NeedsCompilation: no
-# Packaged: 2019-03-16 21:13:16 UTC; kentr
-# Author: Tim Appelhans [aut, cre], Kenton Russell [aut], Lorenzo Busetto [aut]
+# Packaged: 2025-04-20 07:25:58 UTC; tim
+# Author: Tim Appelhans [aut, cre], Kenton Russell [aut], Lorenzo Busetto [aut], Josh O'Brien [ctb], Jakob Gutschlhofer [ctb], Matt Johnson [ctb], Eli Pousson [ctb] (<https://orcid.org/0000-0001-8280-1706>)
 # Maintainer: Tim Appelhans <tim.appelhans@gmail.com>
 # Repository: CRAN
-# Date/Publication: 2019-03-16 22:50:08 UTC
+# Date/Publication: 2025-04-20 08:20:01 UTC
