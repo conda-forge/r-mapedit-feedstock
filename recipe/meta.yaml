@@ -1,4 +1,4 @@
-{% set version = "0.6.0" %}
+{% set version = "0.7.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,45 +9,66 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/mapedit_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/mapedit/mapedit_{{ version }}.tar.gz
-  sha256: bdc3d62fa81fef7f67ae885e72934f9cde93584c558d137d37c49885b5d4a0c7
+  sha256: edb27a8531d0db0375fed6b4401a812d8afaa5a6db0da6a8feed69d2552f41b2
 
 build:
-  number: 5
-  script: R CMD INSTALL --build .
+  number: 0
   noarch: generic
   rpaths:
     - lib/R/lib/
     - lib/
+  missing_dso_whitelist:
+    - '*/R.dll'        # [win]
+    - '*/Rblas.dll'    # [win]
+    - '*/Rlapack.dll'  # [win]
 
 requirements:
   build:
     - {{ posix }}zip               # [win]
   host:
     - r-base
+    - r-dt
+    - r-assertthat
     - r-dplyr
     - r-htmltools >=0.3
     - r-htmlwidgets
     - r-jsonlite
+    - r-leafem
     - r-leaflet >=2.0.1
     - r-leaflet.extras >=1.0
     - r-leafpm
+    - r-leafpop
     - r-mapview
     - r-miniui
+    - r-raster
+    - r-rstudioapi
+    - r-scales
     - r-sf >=0.5_2
     - r-shiny
+    - r-shinywidgets >=0.4.3
+    - r-tmaptools
   run:
     - r-base
+    - r-dt
+    - r-assertthat
     - r-dplyr
     - r-htmltools >=0.3
     - r-htmlwidgets
     - r-jsonlite
+    - r-leafem
     - r-leaflet >=2.0.1
     - r-leaflet.extras >=1.0
     - r-leafpm
+    - r-leafpop
     - r-mapview
     - r-miniui
+    - r-raster
+    - r-rstudioapi
+    - r-scales
     - r-sf >=0.5_2
     - r-shiny
+    - r-shinywidgets >=0.4.3
+    - r-tmaptools
 
 test:
   commands:
@@ -57,9 +78,11 @@ test:
 about:
   home: https://github.com/r-spatial/mapedit
   license: MIT
-  license_file: LICENSE
   summary: Suite of interactive functions and helpers for selecting and editing geospatial data.
   license_family: MIT
+  license_file:
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/MIT
+    - LICENSE
 
 extra:
   recipe-maintainers:
