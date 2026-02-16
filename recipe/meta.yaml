@@ -1,4 +1,4 @@
-{% set version = "0.7.0" %}
+{% set version = "0.8.0" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/mapedit_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/mapedit/mapedit_{{ version }}.tar.gz
-  sha256: edb27a8531d0db0375fed6b4401a812d8afaa5a6db0da6a8feed69d2552f41b2
+  sha256: 3b4a20a953bd1aeb4c9e63971e6e69894889e55e1cc40441f6ab356db898e0a2
 
 build:
   number: 0
